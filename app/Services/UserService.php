@@ -1,0 +1,48 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: mamad
+ * Date: 05/06/2020
+ * Time: 05:32 PM
+ */
+
+namespace App\Services;
+
+
+use App\Models\User;
+use Intervention\Image\Facades\Image;
+
+class UserService
+{
+
+    public function userCreate($request, $role, $password)
+    {
+
+        $user = User::create([
+            'name' => $request->name,
+            'national_code' => $request->national_code,
+            'mobile' => $request->mobile,
+            'role' => $role,
+            'password' => $password,
+        ]);
+        return $user;
+    }
+
+    public function userUpdate($user, $request, $password)
+    {
+        $user->update([
+            'name' => $request->name,
+            'mobile' => $request->mobile,
+            'national_code' => $request->national_code,
+            'password' => $password,
+        ]);
+
+    }
+
+    public function setStatus()
+    {
+
+    }
+
+}
+
